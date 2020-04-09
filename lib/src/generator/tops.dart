@@ -4,7 +4,7 @@ import 'accessories.dart';
 import 'colors.dart';
 
 String topSVG(Avataaar avataaar) {
-  switch (avataaar.top.topType) {
+  switch (avataaar?.top?.topType) {
     case TopType.NoHair:
       {
         return """
@@ -2170,8 +2170,8 @@ String topSVG(Avataaar avataaar) {
   }
 }
 
-String facialHair(avataaar) {
-  switch (avataaar?.facialHair?.facialHairType) {
+String facialHair(Avataaar avataaar) {
+  switch (avataaar?.top?.facialHair?.facialHairType) {
     case FacialHairType.Blank:
       return "";
     case FacialHairType.BeardMedium:
