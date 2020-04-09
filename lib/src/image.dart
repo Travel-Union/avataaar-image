@@ -29,7 +29,8 @@ class AvataaarImage extends StatelessWidget {
 
   String formatSVG() {
     return """
-  <svg
+    <?xml version="1.0" encoding="UTF-8"?>
+    <svg
         width="264px"
         height="280px"
         viewBox="0 0 264 280"
