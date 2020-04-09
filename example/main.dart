@@ -40,8 +40,6 @@ class _ExampleBodyState extends State<ExampleBody> {
           child: Center(
             child: AvataaarImage(
               avatar: _avatar,
-              errorImage: Icon(Icons.error),
-              placeholder: CircularProgressIndicator(),
               width: 128.0,
             ),
           ),

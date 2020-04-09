@@ -107,6 +107,7 @@ enum FacialHairColor {
   BrownDark,
   Platinum,
   Red,
+  PastelPink,
 }
 
 enum ClotheType {
