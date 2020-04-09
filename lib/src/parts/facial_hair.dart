@@ -70,6 +70,30 @@ class FacialHair implements AvataaarPart {
         return null;
     }
   }
+
+  FacialHair copyWith({FacialHairColor facialHairColor}) {
+    switch (this.facialHairType) {
+      case FacialHairType.BeardLight:
+        return FacialHair.beardLight(
+            facialHairColor: facialHairColor ?? this.facialHairColor);
+      case FacialHairType.BeardMagestic:
+        return FacialHair.beardMagestic(
+            facialHairColor: facialHairColor ?? this.facialHairColor);
+      case FacialHairType.BeardMedium:
+        return FacialHair.beardMedium(
+            facialHairColor: facialHairColor ?? this.facialHairColor);
+      case FacialHairType.MoustacheFancy:
+        return FacialHair.moustacheFancy(
+            facialHairColor: facialHairColor ?? this.facialHairColor);
+      case FacialHairType.MoustacheMagnum:
+        return FacialHair.moustacheMagnum(
+            facialHairColor: facialHairColor ?? this.facialHairColor);
+      case FacialHairType.Blank:
+        return FacialHair.blank;
+      default:
+        return null;
+    }
+  }
 }
 
 class FacialHairConverter extends Converter<FacialHair> {

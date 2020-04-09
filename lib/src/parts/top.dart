@@ -545,6 +545,187 @@ class Top implements AvataaarPart {
         return null;
     }
   }
+
+  Top copyWith({
+    AccessoriesType accessoriesType,
+    HatColor hatColor,
+    HairColor hairColor,
+    FacialHair facialHair,
+  }) {
+    switch (this.topType) {
+      case TopType.NoHair:
+        return Top.noHair(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair);
+      case TopType.Eyepatch:
+        return Top.eyepatch(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair);
+      case TopType.Hat:
+        return Top.hat(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair);
+      case TopType.Hijab:
+        return Top.hijab(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            hatColor: hatColor ?? this.hatColor);
+      case TopType.Turban:
+        return Top.turban(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hatColor: hatColor ?? this.hatColor);
+      case TopType.WinterHat1:
+        return Top.winterHat1(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hatColor: hatColor ?? this.hatColor);
+      case TopType.WinterHat2:
+        return Top.winterHat2(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hatColor: hatColor ?? this.hatColor);
+      case TopType.WinterHat3:
+        return Top.winterHat3(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hatColor: hatColor ?? this.hatColor);
+      case TopType.WinterHat4:
+        return Top.winterHat4(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hatColor: hatColor ?? this.hatColor);
+      case TopType.LongHairBigHair:
+        return Top.longHairBigHair(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairBob:
+        return Top.longHairBob(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairBun:
+        return Top.longHairBun(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairCurly:
+        return Top.longHairCurly(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairCurvy:
+        return Top.longHairCurvy(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairDreads:
+        return Top.longHairDreads(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairFrida:
+        return Top.longHairFrida(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair);
+      case TopType.LongHairFro:
+        return Top.longHairFro(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairFroBand:
+        return Top.longHairFroBand(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairNotTooLong:
+        return Top.longHairNotTooLong(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairShavedSides:
+        return Top.longHairShavedSides(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair);
+      case TopType.LongHairMiaWallace:
+        return Top.longHairMiaWallace(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairStraight:
+        return Top.longHairStraight(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairStraight2:
+        return Top.longHairStraight2(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.LongHairStraightStrand:
+        return Top.longHairStraightStrand(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairDreads01:
+        return Top.shortHairDreads01(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairDreads02:
+        return Top.shortHairDreads02(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairFrizzle:
+        return Top.shortHairFrizzle(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairShaggyMullet:
+        return Top.shortHairShaggyMullet(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairShortCurly:
+        return Top.shortHairShortCurly(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairShortFlat:
+        return Top.shortHairShortFlat(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairShortRound:
+        return Top.shortHairShortRound(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairShortWaved:
+        return Top.shortHairShortWaved(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairSides:
+        return Top.shortHairSides(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairTheCaesar:
+        return Top.shortHairTheCaesar(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      case TopType.ShortHairTheCaesarSidePart:
+        return Top.shortHairTheCaesarSidePart(
+            accessoriesType: accessoriesType ?? this.accessoriesType,
+            facialHair: facialHair ?? this.facialHair,
+            hairColor: hairColor ?? this.hairColor);
+      default:
+        return null;
+    }
+  }
 }
 
 class TopConverter extends Converter<Top> {

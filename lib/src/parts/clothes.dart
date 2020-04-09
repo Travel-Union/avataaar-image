@@ -83,6 +83,32 @@ class Clothes implements AvataaarPart {
         return null;
     }
   }
+
+  Clothes copyWith({ClotheColor clotheColor, GraphicType graphicType}) {
+    switch (this.clotheType) {
+      case ClotheType.BlazerShirt:
+        return Clothes.blazerShirt;
+      case ClotheType.BlazerSweater:
+        return Clothes.blazerSweater;
+      case ClotheType.CollarSweater:
+        return Clothes.collarSweater(clotheColor ?? this.clotheColor);
+      case ClotheType.GraphicShirt:
+        return Clothes.graphicShirt(
+            clotheColor ?? this.clotheColor, graphicType ?? this.graphicType);
+      case ClotheType.Hoodie:
+        return Clothes.hoodie(clotheColor ?? this.clotheColor);
+      case ClotheType.Overall:
+        return Clothes.overall(clotheColor ?? this.clotheColor);
+      case ClotheType.ShirtCrewNeck:
+        return Clothes.shirtCrewNeck(clotheColor ?? this.clotheColor);
+      case ClotheType.ShirtScoopNeck:
+        return Clothes.shirtScoopNeck(clotheColor ?? this.clotheColor);
+      case ClotheType.ShirtVNeck:
+        return Clothes.shirtVNeck(clotheColor ?? this.clotheColor);
+      default:
+        return null;
+    }
+  }
 }
 
 class ClothesConverter extends Converter<Clothes> {
