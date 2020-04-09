@@ -29,7 +29,6 @@ class AvataaarImage extends StatelessWidget {
 
   String formatSVG() {
     return """
-    <?xml version="1.0" encoding="UTF-8"?>
     <svg
         width="264px"
         height="280px"
@@ -116,6 +115,7 @@ class AvataaarImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.string(formatSVG(), width: this.width);
+    final svg = formatSVG();
+    return SvgPicture.string(svg, width: this.width);
   }
 }
