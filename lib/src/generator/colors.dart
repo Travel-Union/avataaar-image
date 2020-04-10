@@ -56,7 +56,7 @@ String facialHairColorHex(Avataaar avataaar) {
     case FacialHairColor.PastelPink:
       return "#F59797";
     default:
-      return "";
+      return "#A55728";
   }
 }
 
@@ -83,7 +83,7 @@ String hairColorHex(Avataaar avataaar) {
     case HairColor.SilverGray:
       return "#E8E1E1";
     default:
-      return "";
+      return "#A55728";
   }
 }
 
@@ -120,7 +120,7 @@ String hatColorHex(Avataaar avataaar) {
     case HatColor.White:
       return "#FFFFFF";
     default:
-      return "";
+      return "#65C9FF";
   }
 }
 
@@ -141,7 +141,7 @@ String skinColorHex(Avataaar avataaar) {
     case SkinColor.Black:
       return "#614335";
     default:
-      return "";
+      return "#FD9841";
   }
 }
 
@@ -178,6 +178,6 @@ String clothColorHex(Avataaar avataaar) {
     case ClotheColor.White:
       return "#FFFFFF";
     default:
-      return "";
+      return "#5199E4";
   }
 }

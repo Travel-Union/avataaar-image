@@ -1,3 +1,4 @@
+import 'package:avataaar_image/avataaar_image.dart';
 import 'package:avataaar_image/src/avataaar.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,10 +13,12 @@ class AvataaarImage extends StatelessWidget {
     Key key,
     @required this.avatar,
     this.width: 64.0,
+    this.style: AvatarStyle.Transparent,
   }) : super(key: key);
 
   final Avataaar avatar;
   final double width;
+  final AvatarStyle style;
 
   String faceSvg(Avataaar avatar) {
     return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
@@ -27,7 +30,37 @@ class AvataaarImage extends StatelessWidget {
       """;
   }
 
-  String formatSVG() {
+  String circle(bool show) {
+    if (!show) return "";
+
+    return """
+    <g
+      id="Circle"
+      stroke-width="1"
+      fill-rule="evenodd"
+      transform="translate(12.000000, 40.000000)">
+      <mask id="mask-2" fill="white">
+        <use href="#path-1" />
+      </mask>
+      <use
+        id="Circle-Background"
+        fill="#E6E6E6"
+        href="#path-1"
+      />
+      <g
+        id="Color/Palette/Blue-01"
+        mask="url(#mask-2)"
+        fill="#65C9FF">
+        <rect id="🖍Color" x="0" y="0" width="240" height="240" />
+      </g>
+    </g>
+    <mask id="mask-4" fill="white">
+      <use href="#path-3" />
+    </mask>
+    """;
+  }
+
+  String formatSVG([bool showCircle = false]) {
     return """
     <svg
         width="264px"
@@ -36,6 +69,7 @@ class AvataaarImage extends StatelessWidget {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:link="http://www.w3.org/1999/xlink">
+        <desc>Created with getavataaars.com</desc>
         <defs>
           <circle id="path-1" cx="120" cy="120" r="120" />
           <path
@@ -48,7 +82,7 @@ class AvataaarImage extends StatelessWidget {
           />
         </defs>
         <g
-          id="Avataar"
+          id="Avataaar"
           stroke="none"
           stroke-width="1"
           fill="none"
@@ -57,65 +91,42 @@ class AvataaarImage extends StatelessWidget {
             transform="translate(-825.000000, -1100.000000)"
             id="Avataaar/Circle">
             <g transform="translate(825.000000, 1100.000000)">
-                <g
-                  id="Circle"
-                  stroke-width="1"
-                  fill-rule="evenodd"
-                  transform="translate(12.000000, 40.000000)">
-                  <mask id="mask-2" fill="white">
-                    <use href="#path-1" />
-                  </mask>
-                  <use
-                    id="Circle-Background"
-                    fill="#E6E6E6"
-                    href="#path-1"
-                  />
-                  <g
-                    id="Color/Palette/Blue-01"
-                    mask="url(#mask-2)"
-                    fill="#65C9FF">
-                    <rect id="pen-Color" x="0" y="0" width="240" height="240" />
-                  </g>
-                </g>
-                <mask id="mask-4" fill="white">
-                  <use href="#path-3" />
-                </mask>
+              ${circle(showCircle)}
               <g id="Mask" />
               <g
                 id="Avataaar"
                 stroke-width="1"
                 fill-rule="evenodd"
-                mask="url(#mask-4)">
+                ${showCircle ? 'mask="url(#mask-4)"' : ''}
+                >
                 <g id="Body" transform="translate(32.000000, 36.000000)">
                   <mask id="mask-6" fill="white">
                     <use href="#path-5" />
                   </mask>
-                  <use fill="${skinColorHex(avatar)}" href="#path-5" />""" +
-        skinSvg(avatar, "mask-6") +
-        """
+                  <use fill="${skinColorHex(avatar)}" href="#path-5" />
+                  ${skinSvg(avatar, 'mask-6')}
                   <path
                     d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z"
                     id="Neck-Shadow"
-                    fill-opacity="0.100000001"
+                    opacity="0.100000001"
                     fill="#000000"
                     mask="url(#mask-6)"
                   />
                 </g>
-                """ +
-        getClotheSvg(avatar) +
-        faceSvg(avatar) +
-        topSVG(avatar) +
-        """
+                ${getClotheSvg(avatar)}
+                ${faceSvg(avatar)}
+                ${topSVG(avatar)}
               </g>
             </g>
           </g>
         </g>
-      </svg>""";
+      </svg>
+    """;
   }
 
   @override
   Widget build(BuildContext context) {
-    final svg = formatSVG();
+    final svg = formatSVG(this.style == AvatarStyle.Circle);
     return SvgPicture.string(svg, width: this.width);
   }
 }
