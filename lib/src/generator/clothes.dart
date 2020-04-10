@@ -28,32 +28,32 @@ String getClotheSvg(Avataaar avataaar) {
 
 String blazerShirt() {
   return """
-  <g
+<g
         id="Clothing/Blazer-+-Shirt"
         transform="translate(0.000000, 170.000000)">
         <defs>
           <path
             d="M133.960472,0.294916112 C170.936473,3.32499816 200,34.2942856 200,72.0517235 L200,81 L0,81 L0,72.0517235 C1.22536245e-14,33.9525631 29.591985,2.76498122 67.0454063,0.219526408 C67.0152598,0.593114549 67,0.969227185 67,1.34762511 C67,13.2107177 81.9984609,22.8276544 100.5,22.8276544 C119.001539,22.8276544 134,13.2107177 134,1.34762511 C134,0.994669088 133.986723,0.64370138 133.960472,0.294916112 Z"
-            id="cloth_path"
+            id="path1"
           />
         </defs>
         <g id="Shirt" transform="translate(32.000000, 29.000000)">
-          <mask id="cloth_mask" fill="white">
+          <mask id="mask1" fill="white">
             <use href="#path1" />
           </mask>
-          <use id="Clothes" fill="#E6E6E6" href="#cloth_path" />
-          <g id="Color/Palette/Black" mask="url(#cloth_mask)" fill="#262E33">
-            <g transform="translate(-32.000000, -29.000000)" id="pen-Color">
+          <use id="Clothes" fill="#E6E6E6" href="#path1" />
+          <g id="Color/Palette/Black" mask="url(#mask1)" fill="#262E33">
+            <g transform="translate(-32.000000, -29.000000)" id="🖍Color">
               <rect x="0" y="0" width="264" height="110" />
             </g>
           </g>
           <g
             id="Shadowy"
             opacity="0.599999964"
-            mask="url(#cloth_mask)"
+            mask="url(#mask1)"
             fill-opacity="0.16"
             fill="#000000">
-            <g transform="translate(60.000000, -25.000000)" id="Hola">
+            <g transform="translate(60.000000, -25.000000)" id="Hola-👋🏼">
               <ellipse
                 cx="40.5"
                 cy="27.8476251"
