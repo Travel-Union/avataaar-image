@@ -127,7 +127,6 @@ class AvataaarImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final svg = formatSVG(this.style == AvatarStyle.Circle);
-    print(avatar?.top?.topType);
     return SvgPicture.string(svg, width: this.width);
   }
 }
