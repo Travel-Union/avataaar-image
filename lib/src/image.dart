@@ -136,6 +136,7 @@ class _AvataaarImageState extends State<AvataaarImage> {
     super.initState();
     final svg = formatSVG(widget.style == AvatarStyle.Circle);
     image = SvgPicture.string(svg, width: widget.width);
+    image.createState();
   }
 
   @override
