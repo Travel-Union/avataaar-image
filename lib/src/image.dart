@@ -8,17 +8,24 @@ import 'generator/colors.dart';
 import 'generator/face.dart';
 import 'generator/tops.dart';
 
-class AvataaarImage extends StatelessWidget {
-  AvataaarImage({
+class AvataaarImage extends StatefulWidget {
+  final Avataaar avatar;
+  final double width;
+  final AvatarStyle style;
+
+  const AvataaarImage({
     Key key,
     @required this.avatar,
     this.width: 64.0,
     this.style: AvatarStyle.Transparent,
   }) : super(key: key);
 
-  final Avataaar avatar;
-  final double width;
-  final AvatarStyle style;
+  @override
+  State<StatefulWidget> createState() => _AvataaarImageState();
+}
+
+class _AvataaarImageState extends State<AvataaarImage> {
+  SvgPicture image;
 
   String faceSvg(Avataaar avatar) {
     return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
@@ -103,8 +110,8 @@ class AvataaarImage extends StatelessWidget {
                   <mask id="mask-6" fill="white">
                     <use href="#path-5" />
                   </mask>
-                  <use fill="${skinColorHex(avatar)}" href="#path-5" />
-                  ${skinSvg(avatar, 'mask-6')}
+                  <use fill="${skinColorHex(widget.avatar)}" href="#path-5" />
+                  ${skinSvg(widget.avatar, 'mask-6')}
                   <path
                     d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z"
                     id="Neck-Shadow"
@@ -113,9 +120,9 @@ class AvataaarImage extends StatelessWidget {
                     mask="url(#mask-6)"
                   />
                 </g>
-                ${getClotheSvg(avatar)}
-                ${faceSvg(avatar)}
-                ${topSVG(avatar)}
+                ${getClotheSvg(widget.avatar)}
+                ${faceSvg(widget.avatar)}
+                ${topSVG(widget.avatar)}
               </g>
             </g>
           </g>
@@ -125,8 +132,20 @@ class AvataaarImage extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    final svg = formatSVG(widget.style == AvatarStyle.Circle);
+    image = SvgPicture.string(svg, width: widget.width);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precachePicture(image.pictureProvider, context);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final svg = formatSVG(this.style == AvatarStyle.Circle);
-    return SvgPicture.string(svg, width: this.width);
+    return image;
   }
 }
