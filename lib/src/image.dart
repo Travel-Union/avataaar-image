@@ -9,15 +9,12 @@ import 'generator/colors.dart';
 import 'generator/face.dart';
 import 'generator/tops.dart';
 
-
-
-Future<SvgPicture> createMyPicture(
-    AvataaarImage ai, BuildContext context) async {
-  await Future.delayed(Duration.zero);
-  final svg = formatSVG(ai.avatar, false);
+SvgPicture createMyPicture(
+    AvataaarImage ai, BuildContext context)  {
+  final svg = formatSVG(ai.avatar);
   var image = SvgPicture.string(svg, width: ai.width);
-  image.createState();
-  await precachePicture(image.pictureProvider, context);
+  //image.createState();
+  //await precachePicture(image.pictureProvider, context);
   return image;
 }
 
@@ -61,7 +58,8 @@ String circle(bool show) {
     """;
 }
 
-String formatSVG(Avataaar avatar, [bool showCircle = false]) {
+String formatSVG(Avataaar avatar) {
+  final showCircle = false;
   return """
     <svg
         width="264px"
@@ -141,14 +139,16 @@ class AvataaarImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return createMyPicture(this, context);
+    /*
     final imageKey = this.avatar.toJson();
     final dynamic z = imageCache[imageKey] ?? createMyPicture(this, context);
-    if (z is SvgPicture) return z;
+    if (z is SvgPicture) return z; // at the moment it essentia
     return FutureBuilder<SvgPicture>(
       future: z,
       builder: (context, snapshot) {
         final SvgPicture image = snapshot.data;
-        if (image != null) imageCache[imageKey] = image;
+        //if (image != null) imageCache[imageKey] = image;
         while (imageCache.length > 200)
           imageCache.remove(imageCache.keys.first);
         return AnimatedSwitcher(
@@ -157,7 +157,7 @@ class AvataaarImage extends StatelessWidget {
         );
       },
       initialData: null,
-    );
+    );*/
   }
 }
 /*
