@@ -37,10 +37,13 @@ class _ExampleBodyState extends State<ExampleBody> {
       padding: EdgeInsets.all(16.0),
       child: Column(children: [
         Expanded(
-          child: Center(
-            child: AvataaarImage(
-              avatar: _avatar,
-              width: 128.0,
+          child: Container(
+            alignment: Alignment.center,
+            child: Container(
+              width: 128,
+              child: AvataaarImage(
+                avatar: _avatar,
+              ),
             ),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:avataaar_image/avataaar_image.dart';
 import 'package:avataaar_image/src/avataaar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -8,39 +9,32 @@ import 'generator/colors.dart';
 import 'generator/face.dart';
 import 'generator/tops.dart';
 
-class AvataaarImage extends StatefulWidget {
-  final Avataaar avatar;
-  final double width;
-  final AvatarStyle style;
 
-  const AvataaarImage({
-    Key key,
-    @required this.avatar,
-    this.width: 64.0,
-    this.style: AvatarStyle.Transparent,
-  }) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() => _AvataaarImageState();
+Future<SvgPicture> createMyPicture(
+    AvataaarImage ai, BuildContext context) async {
+  await Future.delayed(Duration.zero);
+  final svg = formatSVG(ai.avatar, false);
+  var image = SvgPicture.string(svg, width: ai.width);
+  image.createState();
+  await precachePicture(image.pictureProvider, context);
+  return image;
 }
 
-class _AvataaarImageState extends State<AvataaarImage> {
-  SvgPicture image;
-
-  String faceSvg(Avataaar avatar) {
-    return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
-        mouthSvg(avatar) +
-        noseSvg() +
-        eyesSvg(avatar) +
-        eyebrowSvg(avatar) +
-        """</g>
+String faceSvg(Avataaar avatar) {
+  return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
+      mouthSvg(avatar) +
+      noseSvg() +
+      eyesSvg(avatar) +
+      eyebrowSvg(avatar) +
+      """</g>
       """;
-  }
+}
 
-  String circle(bool show) {
-    if (!show) return "";
+String circle(bool show) {
+  if (!show) return "";
 
-    return """
+  return """
     <g
       id="Circle"
       stroke-width="1"
@@ -65,10 +59,10 @@ class _AvataaarImageState extends State<AvataaarImage> {
       <use href="#path-3" />
     </mask>
     """;
-  }
+}
 
-  String formatSVG([bool showCircle = false]) {
-    return """
+String formatSVG(Avataaar avatar, [bool showCircle = false]) {
+  return """
     <svg
         width="264px"
         height="280px"
@@ -110,8 +104,8 @@ class _AvataaarImageState extends State<AvataaarImage> {
                   <mask id="mask-6" fill="white">
                     <use href="#path-5" />
                   </mask>
-                  <use fill="${skinColorHex(widget.avatar)}" href="#path-5" />
-                  ${skinSvg(widget.avatar, 'mask-6')}
+                  <use fill="${skinColorHex(avatar)}" href="#path-5" />
+                  ${skinSvg(avatar, 'mask-6')}
                   <path
                     d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z"
                     id="Neck-Shadow"
@@ -120,17 +114,57 @@ class _AvataaarImageState extends State<AvataaarImage> {
                     mask="url(#mask-6)"
                   />
                 </g>
-                ${getClotheSvg(widget.avatar)}
-                ${faceSvg(widget.avatar)}
-                ${topSVG(widget.avatar)}
+                ${getClotheSvg(avatar)}
+                ${faceSvg(avatar)}
+                ${topSVG(avatar)}
               </g>
             </g>
           </g>
         </g>
       </svg>
     """;
-  }
+}
 
+class AvataaarImage extends StatelessWidget {
+  final Avataaar avatar;
+  final double width;
+  final AvatarStyle style;
+
+  const AvataaarImage({
+    Key key,
+    @required this.avatar,
+    this.width,
+    this.style: AvatarStyle.Transparent,
+  }) : super(key: key);
+
+  static Map<String, dynamic> imageCache = Map();
+
+  @override
+  Widget build(BuildContext context) {
+    final imageKey = this.avatar.toJson();
+    final dynamic z = imageCache[imageKey] ?? createMyPicture(this, context);
+    if (z is SvgPicture) return z;
+    return FutureBuilder<SvgPicture>(
+      future: z,
+      builder: (context, snapshot) {
+        final SvgPicture image = snapshot.data;
+        if (image != null) imageCache[imageKey] = image;
+        while (imageCache.length > 200)
+          imageCache.remove(imageCache.keys.first);
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          child: image ?? Container(),
+        );
+      },
+      initialData: null,
+    );
+  }
+}
+/*
+class _AvataaarImageState extends State<AvataaarImage> {
+  SvgPicture image;
+
+ 
   @override
   void initState() {
     super.initState();
@@ -150,3 +184,4 @@ class _AvataaarImageState extends State<AvataaarImage> {
     return image;
   }
 }
+*/
