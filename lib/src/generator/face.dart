@@ -13,7 +13,7 @@ String noseSvg() {
       </g>""";
 }
 
-String eyesSvg(Avataaar avataaar) {
+String eyesSvg(Avataaar? avataaar) {
   switch (avataaar?.eyes?.eyeType) {
     case EyeType.Close:
       return """
@@ -261,7 +261,7 @@ String eyesSvg(Avataaar avataaar) {
   }
 }
 
-String eyebrowSvg(Avataaar avataaar) {
+String eyebrowSvg(Avataaar? avataaar) {
   switch (avataaar?.eyebrow?.eyebrowType) {
     case EyebrowType.Angry:
       return """
@@ -447,7 +447,7 @@ String eyebrowSvg(Avataaar avataaar) {
   }
 }
 
-String mouthSvg(Avataaar avataaar) {
+String mouthSvg(Avataaar? avataaar) {
   switch (avataaar?.mouth?.mouthType) {
     case MouthType.Concerned:
       return """

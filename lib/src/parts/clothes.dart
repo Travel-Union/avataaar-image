@@ -5,9 +5,9 @@ import 'package:avataaar_image/src/pieces.dart';
 class Clothes implements AvataaarPart {
   Clothes._({this.clotheType, this.clotheColor, this.graphicType});
 
-  final ClotheType clotheType;
-  final ClotheColor clotheColor;
-  final GraphicType graphicType;
+  final ClotheType? clotheType;
+  final ClotheColor? clotheColor;
+  final GraphicType? graphicType;
 
   @override
   List get pieces => [clotheType, clotheColor, graphicType];
@@ -31,32 +31,32 @@ class Clothes implements AvataaarPart {
   static Clothes get blazerSweater =>
       Clothes._(clotheType: ClotheType.BlazerSweater);
 
-  static Clothes collarSweater(ClotheColor clotheColor) =>
+  static Clothes collarSweater(ClotheColor? clotheColor) =>
       Clothes._(clotheType: ClotheType.CollarSweater, clotheColor: clotheColor);
 
   static Clothes graphicShirt(
-          ClotheColor clotheColor, GraphicType graphicType) =>
+          ClotheColor? clotheColor, GraphicType? graphicType) =>
       Clothes._(
           clotheType: ClotheType.GraphicShirt,
           clotheColor: clotheColor,
           graphicType: graphicType);
 
-  static Clothes hoodie(ClotheColor clotheColor) =>
+  static Clothes hoodie(ClotheColor? clotheColor) =>
       Clothes._(clotheType: ClotheType.Hoodie, clotheColor: clotheColor);
 
-  static Clothes overall(ClotheColor clotheColor) =>
+  static Clothes overall(ClotheColor? clotheColor) =>
       Clothes._(clotheType: ClotheType.Overall, clotheColor: clotheColor);
 
-  static Clothes shirtCrewNeck(ClotheColor clotheColor) =>
+  static Clothes shirtCrewNeck(ClotheColor? clotheColor) =>
       Clothes._(clotheType: ClotheType.ShirtCrewNeck, clotheColor: clotheColor);
 
-  static Clothes shirtScoopNeck(ClotheColor clotheColor) => Clothes._(
+  static Clothes shirtScoopNeck(ClotheColor? clotheColor) => Clothes._(
       clotheType: ClotheType.ShirtScoopNeck, clotheColor: clotheColor);
 
-  static Clothes shirtVNeck(ClotheColor clotheColor) =>
+  static Clothes shirtVNeck(ClotheColor? clotheColor) =>
       Clothes._(clotheType: ClotheType.ShirtVNeck, clotheColor: clotheColor);
 
-  static Clothes get random {
+  static Clothes? get random {
     final clotheType = randomPiece(ClotheType.values);
     final clotheColor = randomPiece(ClotheColor.values);
     final graphicType = randomPiece(GraphicType.values);
@@ -84,7 +84,7 @@ class Clothes implements AvataaarPart {
     }
   }
 
-  Clothes copyWith({ClotheColor clotheColor, GraphicType graphicType}) {
+  Clothes? copyWith({ClotheColor? clotheColor, GraphicType? graphicType}) {
     switch (this.clotheType) {
       case ClotheType.BlazerShirt:
         return Clothes.blazerShirt;
@@ -111,9 +111,9 @@ class Clothes implements AvataaarPart {
   }
 }
 
-class ClothesConverter extends Converter<Clothes> {
+class ClothesConverter extends Converter<Clothes?> {
   @override
-  Clothes fromMap(Map<String, dynamic> map) {
+  Clothes? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
     return Clothes._(
       clotheType: enumFromJson(ClotheType.values, map['clotheType']),
@@ -123,7 +123,7 @@ class ClothesConverter extends Converter<Clothes> {
   }
 
   @override
-  Map<String, dynamic> toMap(Clothes value) {
+  Map<String, dynamic>? toMap(Clothes? value) {
     if (value == null) return null;
     return {
       'clotheType': enumToJson(value.clotheType),

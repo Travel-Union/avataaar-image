@@ -1,7 +1,7 @@
 import '../../avataaar_image.dart';
 import '../pieces.dart';
 
-String accessorySvg(Avataaar avataaar) {
+String accessorySvg(Avataaar? avataaar) {
   switch (avataaar?.top?.accessoriesType) {
     case AccessoriesType.Blank:
       return "";

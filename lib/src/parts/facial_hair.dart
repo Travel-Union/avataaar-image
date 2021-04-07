@@ -5,8 +5,8 @@ import 'package:avataaar_image/src/pieces.dart';
 class FacialHair implements AvataaarPart {
   FacialHair._({this.facialHairType, this.facialHairColor});
 
-  final FacialHairType facialHairType;
-  final FacialHairColor facialHairColor;
+  final FacialHairType? facialHairType;
+  final FacialHairColor? facialHairColor;
 
   @override
   List get pieces => [facialHairType, facialHairColor];
@@ -14,7 +14,7 @@ class FacialHair implements AvataaarPart {
   static FacialHair get blank =>
       FacialHair._(facialHairType: FacialHairType.Blank);
 
-  static FacialHair beardMedium({FacialHairColor facialHairColor}) =>
+  static FacialHair beardMedium({FacialHairColor? facialHairColor}) =>
       FacialHair._(
           facialHairType: FacialHairType.BeardMedium,
           facialHairColor: facialHairColor);
@@ -30,27 +30,27 @@ class FacialHair implements AvataaarPart {
   @override
   int get hashCode => facialHairType.hashCode ^ facialHairColor.hashCode;
 
-  static FacialHair beardLight({FacialHairColor facialHairColor}) =>
+  static FacialHair beardLight({FacialHairColor? facialHairColor}) =>
       FacialHair._(
           facialHairType: FacialHairType.BeardLight,
           facialHairColor: facialHairColor);
 
-  static FacialHair beardMagestic({FacialHairColor facialHairColor}) =>
+  static FacialHair beardMagestic({FacialHairColor? facialHairColor}) =>
       FacialHair._(
           facialHairType: FacialHairType.BeardMagestic,
           facialHairColor: facialHairColor);
 
-  static FacialHair moustacheFancy({FacialHairColor facialHairColor}) =>
+  static FacialHair moustacheFancy({FacialHairColor? facialHairColor}) =>
       FacialHair._(
           facialHairType: FacialHairType.MoustacheFancy,
           facialHairColor: facialHairColor);
 
-  static FacialHair moustacheMagnum({FacialHairColor facialHairColor}) =>
+  static FacialHair moustacheMagnum({FacialHairColor? facialHairColor}) =>
       FacialHair._(
           facialHairType: FacialHairType.MoustacheMagnum,
           facialHairColor: facialHairColor);
 
-  static FacialHair get random {
+  static FacialHair? get random {
     final facialHairType = randomPiece(FacialHairType.values);
     final facialHairColor = randomPiece(FacialHairColor.values);
     switch (facialHairType) {
@@ -71,7 +71,7 @@ class FacialHair implements AvataaarPart {
     }
   }
 
-  FacialHair copyWith({FacialHairColor facialHairColor}) {
+  FacialHair? copyWith({FacialHairColor? facialHairColor}) {
     switch (this.facialHairType) {
       case FacialHairType.BeardLight:
         return FacialHair.beardLight(
@@ -96,9 +96,9 @@ class FacialHair implements AvataaarPart {
   }
 }
 
-class FacialHairConverter extends Converter<FacialHair> {
+class FacialHairConverter extends Converter<FacialHair?> {
   @override
-  FacialHair fromMap(Map<String, dynamic> map) {
+  FacialHair? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
     return FacialHair._(
       facialHairType:
@@ -109,7 +109,7 @@ class FacialHairConverter extends Converter<FacialHair> {
   }
 
   @override
-  Map<String, dynamic> toMap(FacialHair value) {
+  Map<String, dynamic>? toMap(FacialHair? value) {
     if (value == null) return null;
     return {
       'facialHairType': enumToJson(value.facialHairType),

@@ -16,13 +16,13 @@ class Avataaar implements AvataaarPart {
   });
 
   Avataaar.random({
-    Top top,
-    Clothes clothes,
-    Eyes eyes,
-    Eyebrow eyebrow,
-    Mouth mouth,
-    Skin skin,
-    Style style,
+    Top? top,
+    Clothes? clothes,
+    Eyes? eyes,
+    Eyebrow? eyebrow,
+    Mouth? mouth,
+    Skin? skin,
+    Style? style,
   }) : this(
           top: top ?? Top.random,
           clothes: clothes ?? Clothes.random,
@@ -33,13 +33,13 @@ class Avataaar implements AvataaarPart {
           style: style ?? Style.random,
         );
 
-  final Top top;
-  final Clothes clothes;
-  final Eyes eyes;
-  final Eyebrow eyebrow;
-  final Mouth mouth;
-  final Skin skin;
-  final Style style;
+  final Top? top;
+  final Clothes? clothes;
+  final Eyes? eyes;
+  final Eyebrow? eyebrow;
+  final Mouth? mouth;
+  final Skin? skin;
+  final Style? style;
 
   Iterable<MapEntry<String, String>> get pieceEntries => pieces
       .expand((it) => it?.pieces ?? [])
@@ -47,7 +47,7 @@ class Avataaar implements AvataaarPart {
       .map(_splitEnum);
 
   @override
-  List<AvataaarPart> get pieces =>
+  List<AvataaarPart?> get pieces =>
       [top, clothes, eyes, eyebrow, mouth, skin, style];
 
   MapEntry<String, String> _splitEnum<T>(T enumValue) {
@@ -61,13 +61,13 @@ class Avataaar implements AvataaarPart {
       AvataaarConverter().fromMap(json.decode(value));
 
   Avataaar copyWith({
-    Top top,
-    Clothes clothes,
-    Eyes eyes,
-    Eyebrow eyebrow,
-    Mouth mouth,
-    Skin skin,
-    Style style,
+    Top? top,
+    Clothes? clothes,
+    Eyes? eyes,
+    Eyebrow? eyebrow,
+    Mouth? mouth,
+    Skin? skin,
+    Style? style,
   }) =>
       Avataaar(
         top: top ?? this.top,

@@ -13,29 +13,29 @@ String makeColor(String hex, String maskId) {
         </g>""";
 }
 
-String facialHairColor(Avataaar avataaar, String maskId) {
+String facialHairColor(Avataaar? avataaar, String maskId) {
   return makeColor(facialHairColorHex(avataaar), maskId);
 }
 
-String hairColor(Avataaar avataaar, String maskId) {
+String hairColor(Avataaar? avataaar, String maskId) {
   return makeColor(hairColorHex(avataaar), maskId);
 }
 
-String hatColor(Avataaar avataaar, String maskId) {
+String hatColor(Avataaar? avataaar, String maskId) {
   return makeColor(hatColorHex(avataaar), maskId);
 }
 
-String skinSvg(Avataaar avataaar, String maskId) {
+String skinSvg(Avataaar? avataaar, String maskId) {
   return makeColor(skinColorHex(avataaar), maskId);
 }
 
-clothColor(Avataaar avataaar, String maskId) {
+clothColor(Avataaar? avataaar, String maskId) {
   return makeColor(clothColorHex(avataaar), maskId);
 }
 
 // App wide Hex
 
-String facialHairColorHex(Avataaar avataaar) {
+String facialHairColorHex(Avataaar? avataaar) {
   switch (avataaar?.top?.facialHair?.facialHairColor) {
     case FacialHairColor.Auburn:
       return "#A55728";
@@ -60,7 +60,7 @@ String facialHairColorHex(Avataaar avataaar) {
   }
 }
 
-String hairColorHex(Avataaar avataaar) {
+String hairColorHex(Avataaar? avataaar) {
   switch (avataaar?.top?.hairColor) {
     case HairColor.Auburn:
       return "#A55728";
@@ -87,7 +87,7 @@ String hairColorHex(Avataaar avataaar) {
   }
 }
 
-String hatColorHex(Avataaar avataaar) {
+String hatColorHex(Avataaar? avataaar) {
   switch (avataaar?.top?.hatColor) {
     case HatColor.Black:
       return "#262E33";
@@ -124,7 +124,7 @@ String hatColorHex(Avataaar avataaar) {
   }
 }
 
-String skinColorHex(Avataaar avataaar) {
+String skinColorHex(Avataaar? avataaar) {
   switch (avataaar?.skin?.skinColor) {
     case SkinColor.Tanned:
       return "#FD9841";
@@ -145,7 +145,7 @@ String skinColorHex(Avataaar avataaar) {
   }
 }
 
-String clothColorHex(Avataaar avataaar) {
+String clothColorHex(Avataaar? avataaar) {
   switch (avataaar?.clothes?.clotheColor) {
     case ClotheColor.Black:
       return "#262E33";

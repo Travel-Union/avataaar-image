@@ -18,7 +18,7 @@ SvgPicture createMyPicture(
   return image;
 }
 
-String faceSvg(Avataaar avatar) {
+String faceSvg(Avataaar? avatar) {
   return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
       mouthSvg(avatar) +
       noseSvg() +
@@ -58,7 +58,7 @@ String circle(bool show) {
     """;
 }
 
-String formatSVG(Avataaar avatar) {
+String formatSVG(Avataaar? avatar) {
   final showCircle = false;
   return """
     <svg
@@ -124,13 +124,13 @@ String formatSVG(Avataaar avatar) {
 }
 
 class AvataaarImage extends StatelessWidget {
-  final Avataaar avatar;
-  final double width;
+  final Avataaar? avatar;
+  final double? width;
   final AvatarStyle style;
 
   const AvataaarImage({
-    Key key,
-    @required this.avatar,
+    Key? key,
+    required this.avatar,
     this.width,
     this.style: AvatarStyle.Transparent,
   }) : super(key: key);

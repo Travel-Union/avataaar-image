@@ -5,7 +5,7 @@ import 'package:avataaar_image/src/pieces.dart';
 class Style implements AvataaarPart {
   Style._({this.avatarStyle});
 
-  final AvatarStyle avatarStyle;
+  final AvatarStyle? avatarStyle;
 
   @override
   List get pieces => [avatarStyle];
@@ -24,7 +24,7 @@ class Style implements AvataaarPart {
 
   static Style get transparent => Style._(avatarStyle: AvatarStyle.Transparent);
 
-  static Style get random {
+  static Style? get random {
     final avatarStyle = randomPiece(AvatarStyle.values);
     switch (avatarStyle) {
       case AvatarStyle.Circle:
@@ -37,9 +37,9 @@ class Style implements AvataaarPart {
   }
 }
 
-class StyleConverter extends Converter<Style> {
+class StyleConverter extends Converter<Style?> {
   @override
-  Style fromMap(Map<String, dynamic> map) {
+  Style? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
     return Style._(
       avatarStyle: enumFromJson(AvatarStyle.values, map['avatarStyle']),
@@ -47,7 +47,7 @@ class StyleConverter extends Converter<Style> {
   }
 
   @override
-  Map<String, dynamic> toMap(Style value) {
+  Map<String, dynamic>? toMap(Style? value) {
     if (value == null) return null;
     return {'avatarStyle': enumToJson(value.avatarStyle)};
   }

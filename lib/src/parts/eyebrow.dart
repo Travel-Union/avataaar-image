@@ -5,7 +5,7 @@ import 'package:avataaar_image/src/pieces.dart';
 class Eyebrow implements AvataaarPart {
   Eyebrow._({this.eyebrowType});
 
-  final EyebrowType eyebrowType;
+  final EyebrowType? eyebrowType;
 
   @override
   List get pieces => [eyebrowType];
@@ -58,9 +58,9 @@ class Eyebrow implements AvataaarPart {
       Eyebrow._(eyebrowType: randomPiece(EyebrowType.values));
 }
 
-class EyebrowConverter extends Converter<Eyebrow> {
+class EyebrowConverter extends Converter<Eyebrow?> {
   @override
-  Eyebrow fromMap(Map<String, dynamic> map) {
+  Eyebrow? fromMap(Map<String, dynamic>? map) {
     if (map == null) return null;
     return Eyebrow._(
       eyebrowType: enumFromJson(EyebrowType.values, map['eyebrowType']),
@@ -68,7 +68,7 @@ class EyebrowConverter extends Converter<Eyebrow> {
   }
 
   @override
-  Map<String, dynamic> toMap(Eyebrow value) {
+  Map<String, dynamic>? toMap(Eyebrow? value) {
     if (value == null) return null;
     return {'eyebrowType': enumToJson(value.eyebrowType)};
   }

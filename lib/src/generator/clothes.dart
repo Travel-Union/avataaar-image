@@ -1,7 +1,7 @@
 import '../../avataaar_image.dart';
 import 'colors.dart';
 
-String getClotheSvg(Avataaar avataaar) {
+String getClotheSvg(Avataaar? avataaar) {
   switch (avataaar?.clothes?.clotheType) {
     case ClotheType.BlazerShirt:
       return blazerShirt();
@@ -152,7 +152,7 @@ String blazerSweater() {
       </g>""";
 }
 
-String collarSweater(Avataaar avataaar) {
+String collarSweater(Avataaar? avataaar) {
   return """
   <g
         id='Clothing/Collar-+-Sweater'
@@ -182,7 +182,7 @@ String collarSweater(Avataaar avataaar) {
       </g>""";
 }
 
-String graphicShirt(Avataaar avataaar) {
+String graphicShirt(Avataaar? avataaar) {
   return """
   <g
         id='Clothing/Graphic-Shirt'
@@ -207,7 +207,7 @@ String graphicShirt(Avataaar avataaar) {
       """</g>""";
 }
 
-String hoodie(Avataaar avataaar) {
+String hoodie(Avataaar? avataaar) {
   return """
   <g id='Clothing/Hoodie' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -244,7 +244,7 @@ String hoodie(Avataaar avataaar) {
       </g>""";
 }
 
-String overall(Avataaar avataaar) {
+String overall(Avataaar? avataaar) {
   return """
   <g id='Clothing/Overall' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -282,7 +282,7 @@ String overall(Avataaar avataaar) {
       </g>""";
 }
 
-String shirtCrewNeck(Avataaar avataaar) {
+String shirtCrewNeck(Avataaar? avataaar) {
   return """
   <g
         id='Clothing/Shirt-Crew-Neck'
@@ -323,7 +323,7 @@ String shirtCrewNeck(Avataaar avataaar) {
       </g>""";
 }
 
-String shirtScoopNeck(Avataaar avataaar) {
+String shirtScoopNeck(Avataaar? avataaar) {
   return """
   <g
         id='Clothing/Shirt-Scoop-Neck'
@@ -347,7 +347,7 @@ String shirtScoopNeck(Avataaar avataaar) {
       """</g>""";
 }
 
-String shirtVNeck(Avataaar avataaar) {
+String shirtVNeck(Avataaar? avataaar) {
   return """
   <g id='Clothing/Shirt-V-Neck' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -369,7 +369,7 @@ String shirtVNeck(Avataaar avataaar) {
       """</g>""";
 }
 
-String graphic(Avataaar avataaar, String maskId) {
+String graphic(Avataaar? avataaar, String maskId) {
   switch (avataaar?.clothes?.graphicType) {
     case GraphicType.Bat:
       return """

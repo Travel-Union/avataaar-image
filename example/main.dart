@@ -21,7 +21,7 @@ class ExampleBody extends StatefulWidget {
 }
 
 class _ExampleBodyState extends State<ExampleBody> {
-  Avataaar _avatar;
+  Avataaar? _avatar;
 
   @override
   void initState() {
